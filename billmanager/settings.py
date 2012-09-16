@@ -14,7 +14,7 @@ MANAGERS = ADMINS
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(os.path.dirname(__file__), 'pinshout.db')
+       'NAME': os.path.join(os.path.dirname(__file__), 'bills.db')
    }
 }
 
@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'bills'
 )
 
 # A sample logging configuration. The only tangible logging
