@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 import datetime
 
@@ -18,6 +19,12 @@ class Bill(models.Model):
 	def __unicode__(self):
 		return self.item
 
+class CreateBillForm(ModelForm):
+	class Meta:
+		model = Bill
+
 class UserProfile(models.Model):
+	# required
 	user = models.OneToOneField(User)
 
+	friends = models.ForeignKey(User, related_name='user_profile_friends')

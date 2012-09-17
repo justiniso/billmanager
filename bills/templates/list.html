@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}All Bills{% endblock %}
+
+
+{% block content %}
+
+	{% if bill_list %}
+		<ul>
+			{% for bill in bill_list %}
+				<li>{{ bill.item }}</li>
+			{% endfor %}
+		</ul>
+	{% else%}
+		<p>No bills</p>
+	{% endif %}
+
+{% endblock %}
