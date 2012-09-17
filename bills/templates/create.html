@@ -11,6 +11,13 @@
 		<label for="id_item">Item</label>
 		{{ form.item }}
 	</div>
+	<div>
+		{{ form.message.errors }}
+		<label for="id_item">Message</label>
+		{{ form.message }}
+	</div>
+
+
 
 	<input type="submit" value="Submit" />
 </form>

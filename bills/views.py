@@ -13,9 +13,10 @@ def create(request):
 	if request.method == 'POST':
 		form = CreateBillForm(request.POST)
 		if form.is_valid():
+			form.save()
 			return HttpResponseRedirect('/')
 	else:
 		form = CreateBillForm()
 
-	csrfContext = RequestContext(request, {form: form})
+	csrfContext = RequestContext(request, {'form': form})
 	return render_to_response('create.html', csrfContext)

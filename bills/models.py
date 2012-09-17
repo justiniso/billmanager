@@ -14,7 +14,7 @@ class Bill(models.Model):
 	recipients = models.ManyToManyField(User, related_name='bill_recipients')
 
 	creation_date = models.DateTimeField(auto_now=True)
-	owner = models.ForeignKey(User, related_name='bill_owner', blank=False, null=False)
+	owner = models.ForeignKey(User, related_name='bill_owner')
 
 	def __unicode__(self):
 		return self.item
@@ -22,6 +22,7 @@ class Bill(models.Model):
 class CreateBillForm(ModelForm):
 	class Meta:
 		model = Bill
+		fields = ('item', 'amount', 'due_date', 'message')
 
 class UserProfile(models.Model):
 	# required
