@@ -13,8 +13,8 @@ class Bill(models.Model):
 	message = models.TextField(max_length=4000, blank=True, null=True)
 	recipients = models.ManyToManyField(User, related_name='bill_recipients')
 
+	# Hidden Fields
 	creation_date = models.DateTimeField(auto_now=True)
-	owner = models.ForeignKey(User, related_name='bill_owner')
 
 	def __unicode__(self):
 		return self.item
