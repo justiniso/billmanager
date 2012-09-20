@@ -5,9 +5,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'bills.views.list', name='list'),
-    url(r'^create$', 'bills.views.create', name='create'),
+    url(r'^create/$', 'bills.views.create', name='create'),
+    url(r'^login/$', 'bills.views.login', name='login'),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
