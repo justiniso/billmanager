@@ -2,17 +2,29 @@
 
 {% block title %}All Bills{% endblock %}
 
+{% block css %}
+	<link href="/static/css/dashboard.css" rel="stylesheet" media="screen" />
+{% endblock %}
 
 {% block content %}
+	<table>
+		<thead></thead>
+		<tbody>
+			{% if bill_list %}
+				{% for bill in bill_list %}
+					<tr>
+						<td>${{ bill.amount}}</td>
+						<td>
+							<span>{{ bill.item }}</span>
+							<p>{{ bill.message }}</p>
+						</td>
+						<td>{{ bill.due_date}}</td>
 
-	{% if bill_list %}
-		<ul>
-			{% for bill in bill_list %}
-				<li>{{ bill.item }}</li>
-			{% endfor %}
-		</ul>
-	{% else%}
-		<p>No bills</p>
-	{% endif %}
-
+					</tr>
+				{% endfor %}
+			{% else%}
+				<p>No bills</p>
+			{% endif %}
+		</tbody>
+	</table>
 {% endblock %}

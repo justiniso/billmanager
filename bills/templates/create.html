@@ -2,35 +2,44 @@
 
 {% block title %}New Bill{% endblock %}
 
+{% block css %}
+	<link href="/static/css/create.css" rel="stylesheet" media="screen" />
+{% endblock %}
+
 {% block content %}
-<form action="/create" method="post"> {% csrf_token %}
-	{{ form.non_field_errors }}
+<div class="main-form">
+	<form action="/create/" method="post"> {% csrf_token %}
+		{{ form.non_field_errors }}
 
-	<div>
-		{{ form.item.errors }}
-		<label for="id_item">Item</label>
-		{{ form.item }}
-	</div>
-	<div>
-		{{ form.message.errors }}
-		<label for="id_message">Message</label>
-		{{ form.message }}
-	</div>
-	<div>
-		{{ form.due_date.errors }}
-		<label for="id_due_date">Due Date</label>
-		{{ form.due_date }}
-	</div>
-	<div>
-		{{ form.amount.errors }}
-		<label for="id_amount">Amount</label>
-		{{ form.amount }}
-	</div>
+		<div class="top form-row clear">
+			<div class="field-wrap item">
+				{{ form.item.errors }}
+				<label for="id_item">Item</label>
+				{{ form.item }}
+			</div>
 
-	
+			<div class="field-wrap amount">
+				{{ form.amount.errors }}
+				<label for="id_amount">Amount</label>
+				{{ form.amount }}
+			</div>
 
+			<div class="field-wrap due-date">
+				{{ form.due_date.errors }}
+				<label for="id_due_date">Due Date</label>
+				<input id="id_due_date" type="date" name="due_date">
+			</div>
+		</div>
 
+		<div class="bottom form-row clear">
+			<div class="field-wrap message">
+				{{ form.message.errors }}
+				<label for="id_message">Message</label>
+				<input id="id_message" type="text" name="message" maxlength="1000">
+			</div>
+		</div>
 
-	<input type="submit" value="Submit" />
-</form>
+		<input type="submit" value="Submit" />
+	</form>
+</div>
 {% endblock %}

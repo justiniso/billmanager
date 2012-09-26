@@ -1,0 +1,31 @@
+
+
+/* #FORM */
+
+.main-form {
+	min-width: 400px;
+	max-width: 1000px;
+	width: 80%;
+
+	margin: auto;
+	margin-top: 150px;
+}
+
+/* div.field-wrap */.item {
+	min-width: 150px;
+	width: 60%;
+}
+
+/* div.field-wrap */.amount {
+	min-width: 100px;
+	width: 15%;
+}
+
+/* div.field-wrap */.due-date {
+	min-width: 100px;
+	width: 15%;
+}
+
+/* div.field-wrap */.message{
+	width: 90%;
+}
