@@ -26,9 +26,9 @@ def login(request):
 	return render_to_response('login.html', csrfContext)
 
 
-def list(request):
+def dashboard(request):
 	bill_list = Bill.objects.all().order_by('-due_date')[:5]
-	return render_to_response('list.html', {'bill_list': bill_list})
+	return render_to_response('dashboard.html', {'bill_list': bill_list})
 
 @login_required
 def create(request):

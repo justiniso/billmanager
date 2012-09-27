@@ -1,4 +1,18 @@
+.table-container {
+	width: 70%;
+	max-width: 1000px;
+	margin: auto;
+	margin-top: 40px;
+}
+
+table {
+	margin: auto;
+}
+
 td > p {
 	font-size: 11px;
 	color: #959595;
+
+	margin-top: 4px;
+	line-height: 1.3;
 }

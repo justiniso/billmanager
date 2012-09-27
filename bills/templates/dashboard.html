@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}All Bills{% endblock %}
+
+{% block css %}
+	<link href="/static/css/dashboard.css" rel="stylesheet" media="screen" />
+{% endblock %}
+
+{% block content %}
+	<div class="table-container">
+		<table>
+			<thead>
+				<tr>
+					<th>Amount</th>
+					<th>Item</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if bill_list %}
+					{% for bill in bill_list %}
+						<tr>
+							<td>${{ bill.amount}}</td>
+							<td>
+								<span>{{ bill.item }}</span>
+								{% if bill.message %}<p>{{ bill.message }}</p>{% endif %}
+							</td>
+							<td>{{ bill.due_date}}</td>
+
+						</tr>
+					{% endfor %}
+				{% else%}
+					<tr>
+						<td>No bills</td>
+						<td></td>
+						<td></td>
+					</tr>
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

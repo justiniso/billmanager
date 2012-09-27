@@ -64,18 +64,82 @@ body {
 /* #TABLES */
 
 table {
-	border-collapse: collapse;
+	*border-collapse: collapse;
+	border-spacing: 0;
+	border: 1px solid #ccc;
+	-moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+
+	width: 100%;
 }
 
-td {
+th {
+	background-color: #dce9f9;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+	background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+	-moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+	box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+	border-top: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+th:first-child {
+	-moz-border-radius: 6px 0 0 0;
+	-webkit-border-radius: 6px 0 0 0;
+	border-radius: 6px 0 0 0;
+}
+th:last-child {
+	-moz-border-radius: 0 6px 0 0;
+	-webkit-border-radius: 0 6px 0 0;
+	border-radius: 0 6px 0 0;
+}
+th:only-child{
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+}
+tr:last-child td:first-child {
+	-moz-border-radius: 0 0 0 6px;
+	-webkit-border-radius: 0 0 0 6px;
+	border-radius: 0 0 0 6px;
+}
+
+tr:last-child td:last-child {
+	-moz-border-radius: 0 0 6px 0;
+	-webkit-border-radius: 0 0 6px 0;
+	border-radius: 0 0 6px 0;
+}
+
+td, th {
 	padding: 10px;
-	border: 1px solid #d5d5d5;
+	border-left: 1px solid #d5d5d5;
+	border-top: 1px solid #ccc;
 	max-width: 400px;
+}
+
+td:first-child, th:first-child {
+	border-left: none;
 }
 
 tr:nth-child(2n){
 	background-color: #f9f9f9;
 }
+
+tr:hover
+{
+  background: #EBF2F5;
+  -o-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;     
+} 
 
 
 /* #FORMS */
@@ -84,9 +148,14 @@ input, textarea {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
 }
 
-input[type="text"], input[type="date"] {
+input[type="text"], input[type="date"], input[type="datetime"], input[type="password"], 
+input[type="email"], input[type="time"] {
 	width: 100%%;
 	height: 24px;
 }
