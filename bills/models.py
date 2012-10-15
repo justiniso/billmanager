@@ -14,7 +14,7 @@ class Bill(models.Model):
 	amount = models.DecimalField(max_digits=9, decimal_places=2)
 	due_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
 	message = models.TextField(max_length=4000, blank=True, null=True)
-	recipients = models.ManyToManyField(User, related_name='bill_recipients')
+	recipient = models.ManyToManyField(User, related_name='bill_recipient')
 
 	# Hidden Fields
 	creation_date = models.DateTimeField(auto_now=True)
@@ -31,8 +31,26 @@ class LoginForm(forms.Form):
 	username = forms.CharField(max_length=100)
 	password = forms.CharField(widget=forms.PasswordInput(render_value=False),max_length=100)
 
+class RegisterForm(forms.Form):
+	username = forms.CharField(max_length=100)
+	password = forms.CharField(widget=forms.PasswordInput(render_value=False),max_length=100)
+	first_name = forms.CharField(max_length=24)
+	last_name = forms.CharField(max_length=24)
+
 class UserProfile(models.Model):
 	# required
 	user = models.OneToOneField(User)
 
-	friends = models.ForeignKey(User, related_name='user_profile_friends')
+	friends = models.ManyToManyField(User, related_name='friends')
+
+class Friendship(models.Model):
+	from_friend = models.ForeignKey(User, related_name='friend_set')
+	to_friend = models.ForeignKey(User, related_name='to_friend_set')
+
+	def __unicode__(self):
+		return u'%s, %s' % (
+			self.from_friend.email,
+			self.to_friend.email)
+
+	class Meta:
+		unique_together = (('to_friend', 'from_friend'),)

@@ -25,6 +25,14 @@ def login(request):
 	csrfContext = RequestContext(request, {'form': form})
 	return render_to_response('login.html', csrfContext)
 
+def register(request):
+	if request.method == 'POST':
+		username = request.POST['username']
+		password = request.POST['password']
+		first_name = request.POST['first_name']
+		last_name = request.POST['last_name']
+	else:
+		return render_to_response('register.html')
 
 def dashboard(request):
 	bill_list = Bill.objects.all().order_by('-due_date')[:5]

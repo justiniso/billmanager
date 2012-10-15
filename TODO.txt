@@ -1,0 +1,15 @@
+
+== Back-End ==
+
+- add feature to link users to a bill by email address
+- add ability to register a user
+
+
+
+
+== Front-End ==
+
+- add a dashboard sidebar (actions tbd)
+- add a header (actions tbd)
+- add template/view for registering a new user
+

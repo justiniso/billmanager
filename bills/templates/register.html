@@ -6,20 +6,28 @@
 	<p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
-<form method="post" action="/login/">
+<form method="post" action="/register/">
 {% csrf_token %}
 <table>
 <tr>
-	<td>Email Address</td>
+	<td>* Your first name (to help your friends identify you)</td>
+	<td>{{ form.first_name }}</td>
+</tr>
+<tr>
+	<td>Your last name</td>
+	<td>{{ form.last_name }}</td>
+</tr>
+<tr>
+	<td>* Email Address</td>
 	<td>{{ form.username }}</td>
 </tr>
 <tr>
-	<td>{{ form.password.label_tag }}</td>
+	<td>* Password</td>
 	<td>{{ form.password }}</td>
 </tr>
 </table>
 
-<input type="submit" value="login" />
+<input type="submit" value="register" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
