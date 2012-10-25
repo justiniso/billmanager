@@ -1,13 +1,29 @@
-.table-container {
-	width: 70%;
-	max-width: 1000px;
-	margin: auto;
-	margin-top: 40px;
+
+
+/*  =============================    #SIDEBARS    =============================  */
+
+.sidebar {
+	width: 100px;
+	padding: 20px 10px;
+}
+
+
+
+
+
+/*  =============================    #TABLE    =============================  */
+
+.content {
+	min-width: 500px;
+	margin: 0 0 0 120px; /* width of sidebar plus padding  */
+
+	padding: 40px;
 }
 
 table {
-	margin: auto;
+	margin: 0 auto;
 }
+
 
 td > p {
 	font-size: 11px;

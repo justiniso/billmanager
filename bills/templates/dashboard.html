@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'default.html' %}
 
 {% block title %}All Bills{% endblock %}
 
@@ -7,8 +7,16 @@
 {% endblock %}
 
 {% block content %}
-	<div class="table-container">
-		<table>
+
+	<nav class="sidebar">
+		<ul>
+			<li>Link 1</li>
+			<li>Link 2</li>
+		</ul>
+	</nav>
+
+	<div class="content">
+		<table class="content-blur">
 			<thead>
 				<tr>
 					<th>Amount</th>
