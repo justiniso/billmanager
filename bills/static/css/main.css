@@ -1,3 +1,14 @@
+/**
+
+
+TEAL: #2F99CA
+
+
+
+*/
+
+
+
 
 
 
@@ -132,8 +143,13 @@ footer {
 .sidebar {
 	position: fixed;
 	height: 100%;
-	background: #7E7E7E;
+	background: #E2E2E2;
+	border-right: 1px solid #cbcbcb;
 	display: block;
+
+	-moz-box-shadow: 3px 0 3px rgba(0, 0, 0, 0.12), inset -5px 0 4px -4px rgba(255, 255, 255, 0.6);
+	-webkit-box-shadow: 3px 0 3px rgba(0, 0, 0, 0.12), inset -5px 0 4px -4px rgba(255, 255, 255, 0.6);
+	box-shadow: 3px 0 3px rgba(0, 0, 0, 0.12), inset -5px 0 4px -4px rgba(255, 255, 255, 0.6);
 }
 
 
@@ -158,13 +174,13 @@ th {
 	box-shadow: inset white 0 1px 0 0;
 	background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VlZWRlYiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZGNkYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
 	background-size: 100%;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #EEEDEB), color-stop(100%, #DDDCDA));
-	background-image: -webkit-linear-gradient(#EEEDEB,#DDDCDA);
-	background-image: -moz-linear-gradient(#EEEDEB,#DDDCDA);
-	background-image: -o-linear-gradient(#EEEDEB,#DDDCDA);
-	background-image: -ms-linear-gradient(#EEEDEB,#DDDCDA);
-	background-image: linear-gradient(#EEEDEB,#DDDCDA);
-	background-color: #DDDCDA;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ebebeb), color-stop(100%, #dddddd));
+	background-image: -webkit-linear-gradient(#ebebeb,#dddddd);
+	background-image: -moz-linear-gradient(#ebebeb,#dddddd);
+	background-image: -o-linear-gradient(#ebebeb,#dddddd);
+	background-image: -ms-linear-gradient(#ebebeb,#dddddd);
+	background-image: linear-gradient(#ebebeb,#dddddd);
+	background-color: #dddddd;
 	border: 1px solid #CBC9CF;
 	text-shadow: white 0 1px 0;
 
@@ -219,7 +235,7 @@ tr:nth-child(2n){
 
 tr:hover
 {
-  background: #EBF2F5;
+  background: rgba(47, 153, 202, 0.11);
   -o-transition: all 0.1s ease-in-out;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
@@ -231,13 +247,12 @@ tr:hover
 /*  =============================    #FORMS    =============================  */
 
 input, textarea {
+	border: 0px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 5px;
+	padding: 5px;
 
 	/* For focus styles */
 	outline:none;
@@ -247,21 +262,24 @@ input, textarea {
 }
 
 input:focus {
-	box-shadow: 0 0 5px rgba(0, 0, 255, 0.75);
-	-webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 0.75); 
-	-moz-box-shadow: 0 0 5px rgba(0, 0, 255, 0.75); 
+	box-shadow: 0 0 5px rgba(47, 153, 202, 0.6);
+	-webkit-box-shadow: 0 0 5px rgba(47, 153, 202, 0.6); 
+	-moz-box-shadow: 0 0 5px rgba(47, 153, 202, 0.6);
+
+	outline: 0; 
 }
 
 
 input[type="text"], input[type="date"], input[type="datetime"], input[type="password"], 
 input[type="email"], input[type="time"] {
-	width: 100%%;
+	width: 100%;
 	height: 24px;
 }
 
 .form-row {
 	display: block;
 	margin-bottom: 20px;
+	padding: 2px;
 }
 
 .form-row > .field-wrap {
