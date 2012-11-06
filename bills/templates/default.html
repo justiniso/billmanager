@@ -4,8 +4,10 @@
 {% block header %}
 
 	<header class="header-primary">
-
-
+		<nav>
+			<a class="button" href="{% url dashboard %}">Home</a>
+			<a class="button" href="{% url create %}">+ New Bill</a>
+		</nav>
 	</header>
 
 {% endblock %}

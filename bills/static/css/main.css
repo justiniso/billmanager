@@ -38,8 +38,17 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	outline: thin dotted;
 }
 
+a {
+	color: #2F99CA;
+	text-decoration: none;
+}
+
 a:active {
 	outline: none;
+}
+
+a:visited {
+	color: #305bc9;
 }
 
 body {
@@ -128,6 +137,26 @@ body {
 	border-top-left-radius: 6px;
 	border-top: 1px solid white;
 	border-bottom: 1px solid #D0D0D0;
+}
+
+.header-primary nav {
+	float: left;
+	height: 100%;
+	width: 100%;
+}
+
+.header-primary nav a.button {
+	min-width: 20px;
+	max-width: 100px;
+	height: 100%;
+	text-align: center;
+	/*vertical-align: middle; /* TODO: figure out how to vertically align */
+	color: white;
+	margin-right: 1px; /* to clear the inline border */
+	padding: 10px 10px 0 10px;
+	float: left;
+
+	box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 3px, inset rgba(0, 0, 0, 0.2) 0px -1px 2px;
 }
 
 /*  =============================    #FOOTER    =============================  */
@@ -292,6 +321,6 @@ input[type="email"], input[type="time"] {
 }
 
 
-
+/*  =============================    #BUTTONS    =============================  */
 
 
