@@ -34,6 +34,9 @@ def logout(request):
 	return render_to_response('login.html', csrfContext)
 
 def register(request):
+
+	errors = {}
+
 	if request.method == 'POST':
 		username = request.POST['username']
 		password = request.POST['password']
@@ -43,7 +46,6 @@ def register(request):
 		# Check if user exists
 		if User.objects.filter(username=username).count():
 			errors = {'username': 'User already exists'}
-			return render_to_response('register.html', {'errors': errors})
 
 		else:
 			new_user = User.objects.create_user(username=username, password=password)
@@ -57,13 +59,14 @@ def register(request):
 			if new_user.is_active:
 				auth_login(request, new_user)
 				# TODO: include some message for new users
-			
-			return render_to_response('dashboard.html')
+				return render_to_response('dashboard.html')
 
-	else:
-		form = RegisterForm()
-		csrfContext = RequestContext(request, {'form': form})
-		return render_to_response('register.html', csrfContext)
+			else:
+				errors = {'login': 'Something went wrong'}
+
+	form = RegisterForm()
+	csrfContext = RequestContext(request, {'form': form, 'errors': errors})
+	return render_to_response('register.html', csrfContext)
 
 
 @login_required

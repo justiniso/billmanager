@@ -2,8 +2,12 @@
 
 {% block content %}
 
-{% if errors %}
-	<div>{{ errors.username }}</div>
+{% if errors.username %}
+	<div class="error">{{ errors.username }}</div>
+{% endif %}
+
+{% if errors.login %}
+	<div class="error">{{ errors.login }}</div>
 {% endif %}
 
 <form method="post" action="/register/">
