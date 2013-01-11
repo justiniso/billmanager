@@ -152,3 +152,6 @@ LOGGING = {
         },
     }
 }
+
+# for extending user profile
+AUTH_PROFILE_MODULE = 'bills.UserProfile'
