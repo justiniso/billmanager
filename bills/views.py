@@ -71,7 +71,7 @@ def register(request):
 
 @login_required
 def dashboard(request):
-	bill_list = Bill.objects.all().order_by('-due_date')[:20]
+	bill_list = Bill.objects.filter(creator=request.user).order_by('-due_date')[:20]
 	return render_to_response('dashboard.html', {'bill_list': bill_list})
 
 @login_required
