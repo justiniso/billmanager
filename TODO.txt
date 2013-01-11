@@ -1,9 +1,7 @@
 
 == Functionality ==
 
-- registering a new user
 - adding a new friend
-- delete a bill
 
 
 
