@@ -8,6 +8,7 @@
 			<a class="button" href="{% url dashboard %}">Home</a>
 			<a class="button" href="{% url create %}">+ New Bill</a>
 		</nav>
+		<div>{{ request.user.username }}</div>
 	</header>
 
 {% endblock %}
