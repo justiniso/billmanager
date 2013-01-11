@@ -265,6 +265,11 @@ tr:nth-child(2n){
 	background-color: #f3f3f3;
 }
 
+/* clickable tables */
+tr[data-href] {
+	cursor: pointer;
+}
+
 tr:hover
 {
   background: rgba(47, 153, 202, 0.11);

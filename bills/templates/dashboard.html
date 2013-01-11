@@ -27,14 +27,13 @@
 			<tbody>
 				{% if bill_list %}
 					{% for bill in bill_list %}
-						<tr>
+						<tr data-href="{% url bill bill.id %}">
 							<td>${{ bill.amount}}</td>
 							<td>
 								<span>{{ bill.item }}</span>
 								{% if bill.message %}<p>{{ bill.message }}</p>{% endif %}
 							</td>
 							<td>{{ bill.due_date}}</td>
-
 						</tr>
 					{% endfor %}
 				{% else%}
