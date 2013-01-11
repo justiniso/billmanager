@@ -1,15 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-# TODO: move to a new forms file
-# from django.app import forms
-from django import forms
-from django.forms import ModelForm
-
 import datetime
 
 
 class Bill(models.Model):
+	# creator = models.ForeignKey(User)
 	item = models.CharField(max_length=200)
 	amount = models.DecimalField(max_digits=9, decimal_places=2)
 	due_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
@@ -22,24 +17,11 @@ class Bill(models.Model):
 	def __unicode__(self):
 		return self.item
 
-class CreateBillForm(ModelForm):
-	class Meta:
-		model = Bill
-		fields = ('item', 'amount', 'due_date', 'message')
 
-class LoginForm(forms.Form):
-	username = forms.CharField(max_length=100)
-	password = forms.CharField(widget=forms.PasswordInput(render_value=False),max_length=100)
-
-class RegisterForm(forms.Form):
-	username = forms.CharField(max_length=100)
-	password = forms.CharField(widget=forms.PasswordInput(render_value=False),max_length=100)
-	first_name = forms.CharField(max_length=24)
-	last_name = forms.CharField(max_length=24)
 
 class UserProfile(models.Model):
 	# required
-	user = models.OneToOneField(User)
+	user = models.OneToOneField(User, unique=True)
 
 	friends = models.ManyToManyField(User, related_name='friends')
 
