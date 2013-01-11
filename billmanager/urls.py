@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^create/$', 'bills.views.create', name='create'),
     url(r'^login/$', 'bills.views.login', name='login'),
     url(r'^register/$', 'bills.views.register', name='register'),
+    url(r'^logout/$', 'bills.views.logout', name='logout'),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),

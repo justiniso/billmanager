@@ -3,7 +3,8 @@
 
 - registering a new user
 - adding a new friend
--
+- delete a bill
+- only show bills to the owner of the bill
 
 
 

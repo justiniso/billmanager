@@ -7,26 +7,31 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.decorators import login_required
 
 def login(request):
+	
+	form = LoginForm()
+	message = ''
+
 	if request.method == 'POST':
 		username = request.POST['username']
 		password = request.POST['password']
 		user = authenticate(username=username, password=password)
 		if user is not None:
+			# successful authentication
 			if user.is_active:
 				auth_login(request, user)
 				return HttpResponseRedirect('/')
-			else:
-				return render_to_response('login.html')
-		else:
-			return render_to_response('login.html')
-	else:
-		form = LoginForm()
 
-	csrfContext = RequestContext(request, {'form': form})
+	csrfContext = RequestContext(request, {'form': form, 'message': message})
 	return render_to_response('login.html', csrfContext)
 
 def logout(request):
+	form = LoginForm()
+	message = 'You have successfully logged out'
+
 	auth_logout(request)
+
+	csrfContext = RequestContext(request, {'form': form, 'message': message})
+	return render_to_response('login.html', csrfContext)
 
 def register(request):
 	if request.method == 'POST':
