@@ -64,7 +64,10 @@ LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = '/login/'
 
-AUTHENTICATION_BACKENDS = ('bills.backends.EmailAuthBackend',)
+AUTHENTICATION_BACKENDS = (
+    'bills.backends.EmailAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Additional locations of static files
 STATICFILES_DIRS = (
