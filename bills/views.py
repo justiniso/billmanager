@@ -48,8 +48,11 @@ def register(request):
 
 			# authenticate user
 			new_user = authenticate(username=username, password=password)
-			auth_login(request, new_user)
-			# TODO: include some message for new users
+
+			if new_user.is_active:
+				auth_login(request, new_user)
+				# TODO: include some message for new users
+			
 			return render_to_response('dashboard.html')
 
 	else:
