@@ -8,6 +8,7 @@ class CreateBillForm(ModelForm):
 	class Meta:
 		model = Bill
 		fields = ('item', 'amount', 'due_date', 'message')
+		exlude = ('creator', )
 
 class LoginForm(forms.Form):
 	username = forms.CharField(max_length=100)

@@ -76,7 +76,9 @@ def create(request):
 	if request.method == 'POST':
 		form = CreateBillForm(request.POST)
 		if form.is_valid():
-			form.save()
+			bill = form.save(commit=False)
+			bill.creator = request.user
+			bill.save()
 			return HttpResponseRedirect('/')
 	else:
 		form = CreateBillForm()

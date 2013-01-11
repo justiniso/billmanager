@@ -4,7 +4,7 @@ import datetime
 
 
 class Bill(models.Model):
-	# creator = models.ForeignKey(User)
+	creator = models.ForeignKey(User)
 	item = models.CharField(max_length=200)
 	amount = models.DecimalField(max_digits=9, decimal_places=2)
 	due_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
