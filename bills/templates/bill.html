@@ -13,6 +13,7 @@
 	<h2>${{ bill.amount}}</h2>
 	{% if bill.message %}<p>{{ bill.message }}</p>{% endif %}
 	<date>{{ bill.due_date}}</date>
+	<a class="confirm-delete" href="{% url delete_bill bill.id %}">Delete this bill</a>
 {% else %}
 
 	<h1>There was a problem displaying the bill</h1>
