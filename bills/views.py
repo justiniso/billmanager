@@ -132,7 +132,7 @@ def delete_bill(request, id):
 @login_required
 def add_user(request, id):
 
-	# check if bill exists
+	# check if user exists
 	user_to_add = get_object_or_404(User, pk=id)
 
 	current_user = request.user
