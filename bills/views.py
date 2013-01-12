@@ -22,7 +22,7 @@ def login(request):
 				return HttpResponseRedirect('/')
 
 	csrfContext = RequestContext(request, {'form': form, 'message': message})
-	return render_to_response('login.html', csrfContext)
+	return render_to_response('login.html', csrfContext, RequestContext(request))
 
 def logout(request):
 	form = LoginForm()
@@ -31,7 +31,7 @@ def logout(request):
 	auth_logout(request)
 
 	csrfContext = RequestContext(request, {'form': form, 'message': message})
-	return render_to_response('login.html', csrfContext)
+	return render_to_response('login.html', csrfContext, RequestContext(request))
 
 def register(request):
 
@@ -72,7 +72,9 @@ def register(request):
 @login_required
 def dashboard(request):
 	bill_list = Bill.objects.filter(creator=request.user).order_by('-due_date')[:20]
-	return render_to_response('dashboard.html', {'bill_list': bill_list})
+	return render_to_response('dashboard.html', {
+		'bill_list': bill_list
+		}, RequestContext(request))
 
 @login_required
 def create(request):
@@ -87,7 +89,7 @@ def create(request):
 		form = CreateBillForm()
 
 	csrfContext = RequestContext(request, {'form': form})
-	return render_to_response('create.html', csrfContext)
+	return render_to_response('create.html', csrfContext, RequestContext(request))
 
 def show_bill(request, id):
 
@@ -96,13 +98,13 @@ def show_bill(request, id):
 
 	# check if user has access to the bill
 	if bill.creator == request.user or bill.recipient == request.user:
-		return render_to_response('bill.html', {'bill': bill})
+		return render_to_response('bill.html', {'bill': bill}, RequestContext(request))
 
 	else:  # user does not have persission to see the bill
 		form = LoginForm()
 		message = ''
 		csrfContext = RequestContext(request, {'form': form, 'message': message})
-		return render_to_response('login.html', csrfContext)
+		return render_to_response('login.html', csrfContext, RequestContext(request))
 	
 @login_required
 def delete_bill(request, id):
@@ -126,7 +128,7 @@ def delete_bill(request, id):
 		'delete_form': form, 
 		'bill': bill_to_delete, 
 		'message': message})
-	return render_to_response('bill.html', csrfContext )
+	return render_to_response('bill.html', csrfContext, RequestContext(request) )
 
 
 @login_required
