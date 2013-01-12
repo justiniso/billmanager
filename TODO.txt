@@ -2,6 +2,8 @@
 == Functionality ==
 
 - adding a new friend
+- delete a friend
+- user account page
 
 
 
