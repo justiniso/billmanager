@@ -5,12 +5,16 @@
 
 	<header class="header-primary">
 		<nav>
+			{% if request.user.is_authenticated %}
+			<a class="button">{{ request.user.username }}</a>
+			{% endif %}
 			<a class="button" href="{% url dashboard %}">Home</a>
 			<a class="button" href="{% url create %}">+ New Bill</a>
 			<a class="button logout" href="{% url logout %}">Logout</a>
 		</nav>
-		<div>{{ request.user.username }}</div>
+	
 	</header>
+
 
 {% endblock %}
 
