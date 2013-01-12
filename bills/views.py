@@ -2,7 +2,7 @@ from bills.models import *
 from bills.forms import *
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 
@@ -92,10 +92,7 @@ def create(request):
 def show_bill(request, id):
 
 	# check if bill exists
-	try:
-		bill = Bill.objects.get(pk=id)
-	except:
-		raise Http404
+	bill = get_object_or_404(Bill, pk=id)
 
 	# check if user has access to the bill
 	if bill.creator == request.user or bill.recipient == request.user:
@@ -113,10 +110,7 @@ def delete_bill(request, id):
 	message = ''
 
 	# check if bill exists
-	try:
-		bill_to_delete = Bill.objects.get(pk=id)
-	except:
-		raise Http404
+	bill_to_delete = get_object_or_404(Bill, pk=id)
 
 	form = DeleteBillForm(request.POST, instance=bill_to_delete)
 
@@ -135,8 +129,17 @@ def delete_bill(request, id):
 	return render_to_response('bill.html', csrfContext )
 
 
+@login_required
+def add_user(request, id):
 
+	# check if bill exists
+	user_to_add = get_object_or_404(User, pk=id)
 
+	current_user = request.user
+	friendship = Friendship(from_friend=current_user, to_friend=user_to_add)
+	friendship.save()
+
+	return HttpResponseRedirect('/')
 
 
 
