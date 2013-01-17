@@ -9,7 +9,7 @@ class Bill(models.Model):
 	amount = models.DecimalField(max_digits=9, decimal_places=2)
 	due_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
 	message = models.TextField(max_length=4000, blank=True, null=True)
-	recipient = models.ManyToManyField(User, related_name='bill_recipient')
+	recipient = models.ForeignKey(User, related_name='user', blank=True, null=True)
 
 	# Hidden Fields
 	creation_date = models.DateTimeField(auto_now=True)
