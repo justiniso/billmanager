@@ -1,3 +1,4 @@
+from bills import utils
 from bills.models import *
 from bills.forms import *
 from django.http import HttpResponse, HttpResponseRedirect, Http404
@@ -83,12 +84,18 @@ def create(request):
 		if form.is_valid():
 			bill = form.save(commit=False)
 			bill.creator = request.user
+			bill.recipient = utils.get_or_create_user(form.cleaned_data['recipient'])
 			bill.save()
 			return HttpResponseRedirect('/')
 	else:
 		form = CreateBillForm()
 
-	csrfContext = RequestContext(request, {'form': form})
+	friends = [ friendship.to_friend
+		for friendship in request.user.friend_set.all() ]
+
+	csrfContext = RequestContext(request, {
+		'form': form,
+		'friends': friends })
 	return render_to_response('create.html', csrfContext, RequestContext(request))
 
 def show_bill(request, id):
