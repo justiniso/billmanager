@@ -27,6 +27,12 @@ function setup() {
 		return conf;
 	});
 
+	$('.quickselect a').click( function() {
+		$('.quickselect input').val(this.innerHTML);
+		$(this).fadeOut();
+		return false;
+	});
+
 }
 
 
