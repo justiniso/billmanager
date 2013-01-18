@@ -1,0 +1,29 @@
+
+
+<p>
+Hello, 
+<br>
+{% if bill.creator.first_name %}
+	{{ bill.creator.first_name }}
+{% else %}
+	{{ bill.creator.username }}
+{% endif %}
+ has requested that you pay them ${{ bill.amount }} for "{{ bill.item }}"</p>
+
+{% if bill.message %}
+<p>
+	They say: "{{ bill.message }}"
+</p>
+{% endif %}
+
+
+{% if bill.due_date %}
+<h2>Due on: </h2>
+<p>
+	{{ bill.due_date }}
+</p>
+{% endif %}
+
+<br>
+<br>
+<p><a href="{% url bill bill.id %}">Click here</a> to view the payment request.</p>
