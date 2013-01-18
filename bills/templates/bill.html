@@ -14,7 +14,10 @@
 	{% if bill.message %}<p>{{ bill.message }}</p>{% endif %}
 	<date>{{ bill.due_date}}</date>
 	<p>{{ bill.recipient}}</p>
+
+	{% if bill.creator.pk == request.user.pk %}
 	<a class="confirm-delete" href="{% url delete_bill bill.id %}">Delete this bill</a>
+	{% endif %}
 {% else %}
 
 	<h1>There was a problem displaying the bill</h1>
