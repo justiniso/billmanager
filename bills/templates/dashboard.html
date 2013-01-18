@@ -39,5 +39,36 @@
 				{% endif %}
 			</tbody>
 		</table>
+
+		<h1>Payments you owe</h1>
+		<table class="content-blur">
+			<thead>
+				<tr>
+					<th>Amount</th>
+					<th>Item</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if my_bill_list %}
+					{% for bill in my_bill_list %}
+						<tr data-href="{% url bill bill.id %}">
+							<td>${{ bill.amount}}</td>
+							<td>
+								<span>{{ bill.item }}</span>
+								{% if bill.message %}<p>{{ bill.message }}</p>{% endif %}
+							</td>
+							<td>{{ bill.due_date}}</td>
+						</tr>
+					{% endfor %}
+				{% else%}
+					<tr>
+						<td>Congrats, you're all paid up!</td>
+						<td></td>
+						<td></td>
+					</tr>
+				{% endif %}
+			</tbody>
+		</table>
 	</div>
 {% endblock %}
