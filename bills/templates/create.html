@@ -8,6 +8,7 @@
 
 {% block content %}
 <div class="main-form">
+
 	<form action="/create/" method="post"> {% csrf_token %}
 		{{ form.non_field_errors }}
 
@@ -27,7 +28,7 @@
 			<div class="field-wrap due-date">
 				{{ form.due_date.errors }}
 				<label for="id_due_date">Due Date</label>
-				<input id="id_due_date" type="date" name="due_date">
+				{{ form.due_date }}
 			</div>
 		</div>
 
@@ -37,9 +38,19 @@
 				<label for="id_message">Message</label>
 				<input id="id_message" type="text" name="message" maxlength="1000">
 			</div>
+
+			<div class="field-wrap message quickselect">
+				{{ form.recipient.errors }}
+				<label for="id_recipient">Recipient</label>
+				{{ form.recipient }}
+				{% for friend in friends %}
+					<a href="#" data-user-id="{{ friend.id }}">{{ friend.username }}</a>
+				{% endfor %}
+			</div>
 		</div>
 
 		<input type="submit" value="Submit" />
 	</form>
+
 </div>
 {% endblock %}
