@@ -1,4 +1,5 @@
 from bills import utils
+from bills.emails import *
 from bills.models import *
 from bills.forms import *
 from django.http import HttpResponse, HttpResponseRedirect, Http404
@@ -72,9 +73,11 @@ def register(request):
 
 @login_required
 def dashboard(request):
-	bill_list = Bill.objects.filter(creator=request.user).order_by('-due_date')[:20]
+	bill_list = Bill.objects.filter(creator=request.user).order_by('-due_date')[:5]
+	my_bill_list = Bill.objects.filter(recipient=request.user).order_by('-due_date')[:5]
 	return render_to_response('dashboard.html', {
-		'bill_list': bill_list
+		'bill_list': bill_list,
+		'my_bill_list': my_bill_list
 		}, RequestContext(request))
 
 @login_required
@@ -86,6 +89,7 @@ def create(request):
 			bill.creator = request.user
 			bill.recipient = utils.get_or_create_user(form.cleaned_data['recipient'])
 			bill.save()
+			send_new_bill_notification(bill)
 			return HttpResponseRedirect('/')
 	else:
 		form = CreateBillForm()
@@ -123,12 +127,20 @@ def delete_bill(request, id):
 
 	form = DeleteBillForm(request.POST, instance=bill_to_delete)
 
-	if form.is_valid:  # check csrf
-		bill_to_delete.delete()
-		return HttpResponseRedirect("/")
-	
+	user_is_authorized_to_delete_bill = False
+
+	if bill_to_delete.creator.pk == request.user.pk:
+		user_is_authorized_to_delete_bill = True
+
+	if user_is_authorized_to_delete_bill:
+		if form.is_valid:  # check csrf
+			bill_to_delete.delete()
+			return HttpResponseRedirect("/")
+		
+		else:
+			message = 'Unable to delete bill'
 	else:
-		message = 'Unable to delete bill'
+		message = 'You do not have permission to delete this bill'
 
 
 	csrfContext = RequestContext(request, {
