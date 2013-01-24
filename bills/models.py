@@ -13,6 +13,8 @@ class Bill(models.Model):
 
 	# Hidden Fields
 	creation_date = models.DateTimeField(auto_now=True)
+	recipient_marked_paid = models.BooleanField(default=False)
+	creator_marked_paid = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.item
