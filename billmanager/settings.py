@@ -134,6 +134,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'bills',
     'jquery',
+    'south',
+    'migrations',
 )
 
 # A sample logging configuration. The only tangible logging
