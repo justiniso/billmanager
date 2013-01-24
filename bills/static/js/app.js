@@ -10,6 +10,10 @@ function setup() {
 		window.location = href;
 	});
 
+	$('.row-container .content').click( function() {
+		$(this).parent().toggleClass('selected');
+	});
+
 
 	// FORMS & ACTIONS
 	$('.confirm').click( function() {

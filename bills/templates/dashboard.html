@@ -1,6 +1,6 @@
 {% extends 'default.html' %}
 
-{% block title %}All Bills{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block css %}
 	<link href="/static/css/dashboard.css" rel="stylesheet" media="screen" />
@@ -8,39 +8,48 @@
 
 {% block content %}
 
-	<div class="content">
-		<a class="button" href="{% url create %}">&nbsp+ New Bill</a>
-		<table class="content-blur">
-			<thead>
-				<tr>
-					<th>Amount</th>
-					<th>Item</th>
-					<th>Date</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% if bill_list %}
-					{% for bill in bill_list %}
-						<tr data-href="{% url bill bill.id %}">
-							<td>${{ bill.amount}}</td>
-							<td>
-								<span>{{ bill.item }}</span>
-								{% if bill.message %}<p>{{ bill.message }}</p>{% endif %}
-							</td>
-							<td>{{ bill.due_date}}</td>
-						</tr>
-					{% endfor %}
-				{% else%}
-					<tr>
-						<td>No bills</td>
-						<td></td>
-						<td></td>
-					</tr>
-				{% endif %}
-			</tbody>
-		</table>
+	<div class="main-content">
 
-		<h1>Payments you owe</h1>
+		<div class="table sent-list">
+			<header></header>
+			<div class="row buttons new-bill clear">
+				<a class="button" title="Request a new payment" href="{% url create %}"><i class="icon-plus"></i> New Bill</a>
+			</div>
+			
+				
+			{% if bill_list %}
+				{% for bill in bill_list %}
+					<div class="row-container">
+						<div class="row content clear">
+							<span class="block amount dollars">${{ bill.amount}}</span>
+							<div class="block item">
+								<div class="name">{% if bill.creator_marked_paid %}(Paid) {% endif %}{{ bill.item }}</div>
+								{% if bill.message %}
+								<p class="description">{{ bill.message }}</p>
+								{% endif %}
+							</div>
+							<span class="block duedate">{{ bill.due_date}}</span>
+						</div>
+						<div class="row actions clear ">
+							{% if bill.creator_marked_paid %}
+								<a class="mark-paid" href="#"><i class="icon-check"></i> Mark as unpaid</a>
+							{% else %}
+								<a class="mark-paid" href="#"><i class="icon-check-empty"></i> Mark as paid</a>
+							{% endif %}
+							<a class="delete button confirm-delete" href="{% url delete_bill bill.id %}">Delete</a>
+							<a class="show-details" href="{% url bill bill.id %}">See details <i class="icon-share"></i></a>
+						</div>
+					</div>
+				{% endfor %}
+			{% else%}
+				<div class="row buttons no-bills clear">
+					<span>You haven't created any bills yet</span>	
+				</div>
+			{% endif %}
+			
+		</div>
+
+		<!--
 		<table class="content-blur">
 			<thead>
 				<tr>
@@ -70,5 +79,6 @@
 				{% endif %}
 			</tbody>
 		</table>
+	-->
 	</div>
 {% endblock %}

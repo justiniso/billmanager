@@ -13,7 +13,7 @@ TEAL: #2F99CA
 
 
 
-/*  =============================    #RESET    =============================  */
+/*  =============================    RESET    =============================  */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -83,18 +83,25 @@ blockquote, q {
 	width: 100%;
 }
 
-/* =============================    #FONT STACK    ============================= */
+/* =============================    FONT STACK    ============================= */
 body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 14px;
-	color: #595959;
+	color: rgb(66, 62, 62);
 }
 
+h1 { font-size: 4.0em; }
+h2 { font-size: 3.2em; }
+h3 { font-size: 2.5em; }
+h4 { font-size: 1.9em; }
+h5 { font-size: 1.5em; }
+h6 { font-size: 1.2em; }
 
-/*  =============================    #PAGE LAYOUT    =============================  */
+
+/*  =============================    PAGE LAYOUT    =============================  */
 
 body {
-	background: #F2F1EF url('../images/body.gif');
+	background: rgb(55,55,55) url('../images/darkdenim.png');
 }
 
 .body { 
@@ -107,7 +114,7 @@ body {
 
 
 
-/*  =============================    #HEADER    =============================  */
+/*  =============================    HEADER    =============================  */
 
 .header-primary {
 	width: 100%;
@@ -162,7 +169,7 @@ body {
 	box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 3px, inset rgba(0, 0, 0, 0.2) 0px -1px 2px;
 }
 
-/*  =============================    #FOOTER    =============================  */
+/*  =============================    FOOTER    =============================  */
 
 footer {
 
@@ -170,7 +177,7 @@ footer {
 
 
 
-/*  =============================    #SIDEBARS    =============================  */
+/*  =============================    SIDEBARS    =============================  */
 
 .sidebar {
 	position: fixed;
@@ -188,7 +195,7 @@ footer {
 
 
 
-/*  =============================    #TABLES    =============================  */
+/*  =============================    TABLES    =============================  */
 
 table {
 	*border-collapse: collapse;
@@ -272,7 +279,7 @@ tr[data-href] {
 
 tr:hover
 {
-  background: rgba(47, 153, 202, 0.11);
+  background: rgba(100, 100, 100, 1);
   -o-transition: all 0.1s ease-in-out;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
@@ -281,7 +288,7 @@ tr:hover
 } 
 
 
-/*  =============================    #FORMS    =============================  */
+/*  =============================    FORMS    =============================  */
 
 input, textarea {
 	border: 0px;
@@ -289,13 +296,18 @@ input, textarea {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 
+	color: #666666;
+
 	padding: 5px;
 
 	/* For focus styles */
-	outline:none;
+
+	outline: none;
+
 	transition: all 0.1s ease-in-out;
 	-webkit-transition: all 0.1s ease-in-out;
 	-moz-transition: all 0.1s ease-in-out;
+
 }
 
 input:focus {
@@ -303,7 +315,10 @@ input:focus {
 	-webkit-box-shadow: 0 0 5px rgba(47, 153, 202, 0.6); 
 	-moz-box-shadow: 0 0 5px rgba(47, 153, 202, 0.6);
 
-	outline: 0; 
+	color: rgb(0,0,0);
+
+	outline: none;
+
 }
 
 
@@ -311,6 +326,8 @@ input[type="text"], input[type="date"], input[type="datetime"], input[type="pass
 input[type="email"], input[type="time"] {
 	width: 100%;
 	height: 24px;
+	box-shadow: inset 0 1px 4px 0px #777;
+
 }
 
 .form-row {
@@ -329,6 +346,115 @@ input[type="email"], input[type="time"] {
 }
 
 
-/*  =============================    #BUTTONS    =============================  */
+/*  =============================    BUTTONS    =============================  */
+
+
+/* Normal Default Buttons */
+
+a.button, button, input[type="button"], input[type="submit"] {
+	padding: 8px 20px;
+	background-color: #eeeeee;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
+	background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+	background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+	background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+	background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+	background-image: linear-gradient(top, #eeeeee, #cccccc);
+	border: 1px solid #ccc;
+	border-bottom: 1px solid #bbb;
+	border-radius: 3px;
+	color: #333;
+	font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	text-align: center;
+	text-shadow: 0 1px 0 #eee;
+	width: 150px; 
+}
+
+a.button:hover, button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+	background-color: #dddddd;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
+	background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
+	background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
+	background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
+	background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
+	background-image: linear-gradient(top, #dddddd, #bbbbbb);
+	border: 1px solid #bbb;
+	border-bottom: 1px solid #999;
+	cursor: pointer;
+	text-shadow: 0 1px 0 #ddd; 
+}
+a.button:active, button:active, input[type="button"]:active, input[type="submit"]:active {
+	border: 1px solid #aaa;
+	border-bottom: 1px solid #888;
+	-webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+	-moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+	box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+}
+
+
+/* Delete buttons */
+
+a.button.delete, button.delete, input[type="button"].delete, input[type="submit"].delete {
+	background-color: rgb(250, 139, 139);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(250, 139, 139)), color-stop(100%, rgb(194, 76, 76)));
+	background-image: -webkit-linear-gradient(top, rgb(250, 139, 139), rgb(194, 76, 76));
+	background-image: -moz-linear-gradient(top, rgb(250, 139, 139), rgb(194, 76, 76));
+	background-image: -ms-linear-gradient(top, rgb(250, 139, 139), rgb(194, 76, 76));
+	background-image: -o-linear-gradient(top, rgb(250, 139, 139), rgb(194, 76, 76));
+	background-image: linear-gradient(top, rgb(250, 139, 139), rgb(194, 76, 76));
+	border: 1px solid rgb(202, 68, 68);
+	border-bottom: 1px solid rgb(179, 55, 55);
+	color: rgb(250, 250, 250);
+	text-shadow: 0 1px 0 rgb(138, 53, 53);
+}
+
+a.button.delete:hover, button.delete:hover, input[type="button"].delete:hover, input[type="submit"].delete:hover {
+	background-color: rgb(230, 120, 120);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(230, 120, 120)), color-stop(100%, rgb(180, 62, 62)));
+	background-image: -webkit-linear-gradient(top, rgb(230, 120, 120), rgb(180, 62, 62));
+	background-image: -moz-linear-gradient(top, rgb(230, 120, 120), rgb(180, 62, 62));
+	background-image: -ms-linear-gradient(top, rgb(230, 120, 120), rgb(180, 62, 62));
+	background-image: -o-linear-gradient(top, rgb(230, 120, 120), rgb(180, 62, 62));
+	background-image: linear-gradient(top, rgb(230, 120, 120), rgb(180, 62, 62));
+	border: 1px solid rgb(179, 55, 55);
+	border-bottom: 1px solid rgb(165, 45, 45);
+	cursor: pointer;
+	text-shadow: 0 1px 0 rgb(138, 53, 53); 
+}
+a.button.delete:active, button.delete:active, input[type="button"].delete:active, input[type="submit"].delete:active {
+	border: 1px solid rgb(165, 45, 45);
+	border-bottom: 1px rgb(145, 35, 35);
+	-webkit-box-shadow: inset 0 0 5px 2px rgb(170, 52, 52), 0 1px 0 0 rgb(250, 139, 139);
+	-moz-box-shadow: inset 0 0 5px 2px rgb(170, 52, 52), 0 1px 0 0 rgb(250, 139, 139);
+	box-shadow: inset 0 0 5px 2px rgb(170, 52, 52), 0 1px 0 0 rgb(250, 139, 139);
+}
+
+
+/*  =============================    MODALS   =============================  */
+
+
+.modal {
+	margin: 20px auto;
+	padding: 40px;
+	background: #f1f1f1;
+
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+
+	box-shadow: 3px 3px 30px 12px rgba(10,10,10,0.5), inset 0 2px 3px 2px rgb(255,255,255);
+	-webkit-box-shadow: 3px 3px 30px 12px rgba(10,10,10,0.5), inset 0 2px 3px 2px rgb(255,255,255);
+	-moz-box-shadow: 3px 3px 30px 12px rgba(10,10,10,0.5), inset 0 2px 3px 2px rgb(255,255,255);
+}
+
+.modal .field-wrap {
+	margin: 16px auto;
+
+}
+
+.modal .field-wrap > * {
+	display: block;
+}
+
 
 
