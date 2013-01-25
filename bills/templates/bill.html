@@ -19,7 +19,12 @@
 		<p>{{ bill.recipient}}</p>
 
 		{% if bill.creator.pk == request.user.pk %}
-			<a class="button" href="#">{{bill.recipient}} has paid this</a>
+
+			{% if bill.creator_marked_paid %}
+				<a class="button" href="{% url mark_bill_unpaid bill.id %}">{{bill.recipient}} has not paid this</a>
+			{% else %}
+				<a class="button" href="{% url mark_bill_paid bill.id %}">{{bill.recipient}} has paid this</a>
+			{% endif %}
 			<a class="button delete confirm-delete" href="{% url delete_bill bill.id %}">Delete this bill</a>
 		{% else %}
 			<a class="button" href="#">I paid this</a>

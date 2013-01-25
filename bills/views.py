@@ -162,7 +162,70 @@ def add_user(request, id):
 
 	return HttpResponseRedirect('/')
 
+@login_required
+def mark_bill_as_paid(request, id):
+	bill_to_mark = get_object_or_404(Bill, pk=id)
 
+	message = 'Unable to modify bill'
+
+	# check if bill exists
+
+	form = MarkBillForm(request.POST, instance=bill_to_mark)
+
+	if form.is_valid:  # check csrf
+
+		# user is the creator
+		if bill_to_mark.creator.pk == request.user.pk:
+			bill_to_mark.creator_marked_paid = True
+			
+		# user is the recipient
+		elif bill_to_mark.recipient.pk == request.user.pk:
+			bill_to_mark.recipient_marked_paid = True
+				
+		else:
+			message = 'You do not have permission to modify this bill'
+
+		bill_to_mark.save()
+		return HttpResponseRedirect("/")
+
+	csrfContext = RequestContext(request, {
+		'mark_form': form, 
+		'bill': bill_to_mark, 
+		'message': message})
+	return render_to_response('bill.html', csrfContext, RequestContext(request) )
+
+
+@login_required
+def mark_bill_as_unpaid(request, id):
+	bill_to_mark = get_object_or_404(Bill, pk=id)
+
+	message = 'Unable to modify bill'
+
+	# check if bill exists
+
+	form = MarkBillForm(request.POST, instance=bill_to_mark)
+
+	if form.is_valid:  # check csrf
+
+		# user is the creator
+		if bill_to_mark.creator.pk == request.user.pk:
+			bill_to_mark.creator_marked_paid = False
+			
+		# user is the recipient
+		elif bill_to_mark.recipient.pk == request.user.pk:
+			bill_to_mark.recipient_marked_paid = False
+				
+		else:
+			message = 'You do not have permission to modify this bill'
+
+		bill_to_mark.save()
+		return HttpResponseRedirect("/")
+
+	csrfContext = RequestContext(request, {
+		'mark_form': form, 
+		'bill': bill_to_mark, 
+		'message': message})
+	return render_to_response('bill.html', csrfContext, RequestContext(request) )
 
 
 

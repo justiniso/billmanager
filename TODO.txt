@@ -1,12 +1,30 @@
 
 == Functionality ==
 
-- adding a new friend
+
 - delete a friend
-- user account page
+- email send error handling
+- asynch email send
+- login error handling: return error messages
+- login error handling: don't search for users if a field is empty
+- ajax bill marking / deleting
+- add a status of paid or unpaid to a bill
+- auth tokens to view bills from email links
+
 
 
 
 == Design ==
 
+- adding a new friend
+- user account page
+- organize dashboard css
+- figure out how to center input with padding without applying box-sizing
+- style inputs with focus styles
+- change all static url references with the {% STATIC_URL %} tag
 
+
+=== UI ideas ==
+
+- make the forgot password link very faded and subtle, but slowly more prominent as the user spends more time on the login form
+- check if name looks valid (4+ consonants in a row, high proportion of asdf, non-character)

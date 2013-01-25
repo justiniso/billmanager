@@ -19,6 +19,11 @@ class DeleteBillForm(forms.ModelForm):
 		model = Bill
 		fields = []
 
+class MarkBillForm(forms.ModelForm):
+	class Meta:
+		model = Bill
+		fields = []
+
 class LoginForm(forms.Form):
 	username = forms.EmailField(max_length=100)
 	password = forms.CharField(widget=forms.PasswordInput(render_value=False),max_length=100)

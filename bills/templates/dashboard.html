@@ -32,9 +32,9 @@
 						</div>
 						<div class="row actions clear ">
 							{% if bill.creator_marked_paid %}
-								<a class="mark-paid" href="#"><i class="icon-check"></i> Mark as unpaid</a>
+								<a class="mark-paid" href="{% url mark_bill_unpaid bill.id %}"><i class="icon-check"></i> Mark as unpaid</a>
 							{% else %}
-								<a class="mark-paid" href="#"><i class="icon-check-empty"></i> Mark as paid</a>
+								<a class="mark-paid" href="{% url mark_bill_paid bill.id %}"><i class="icon-check-empty"></i> Mark as paid</a>
 							{% endif %}
 							<a class="delete button confirm-delete" href="{% url delete_bill bill.id %}">Delete</a>
 							<a class="show-details" href="{% url bill bill.id %}">See details <i class="icon-share"></i></a>
