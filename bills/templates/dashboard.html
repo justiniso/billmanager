@@ -19,11 +19,11 @@
 				
 			{% if bill_list %}
 				{% for bill in bill_list %}
-					<div class="row-container">
+					<div class="row-container {% if bill.creator_marked_paid %}paid{% endif %}">
 						<div class="row content clear">
 							<span class="block amount dollars">${{ bill.amount}}</span>
 							<div class="block item">
-								<div class="name">{% if bill.creator_marked_paid %}(Paid) {% endif %}{{ bill.item }}</div>
+								<div class="name">{% if bill.creator_marked_paid %}PAID - {% endif %}{{ bill.item }}</div>
 								{% if bill.message %}
 								<p class="description">{{ bill.message }}</p>
 								{% endif %}
